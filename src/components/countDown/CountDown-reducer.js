@@ -21,7 +21,7 @@ export default (state = initialState, { type, payload }) => {
 	case RESET:
 		return { ...state, start: false, current: {...defaultTime}, initial: {...defaultTime}}
 	case STOP:
-		return { ...state, start: false}
+		return { ...state, start: !state.start}
 	case SET_TIME: {
 		return {...state, initial: {...payload}, current: {...payload}}
 	}
