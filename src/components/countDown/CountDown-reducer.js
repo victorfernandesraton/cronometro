@@ -1,12 +1,13 @@
-import {defaultTime, dispatcher} from "./RegressiveCount-constants"
-import { decrementTime } from "./RegressiveCount-utiils"
+import {defaultTime, dispatcher} from "./CountDown-constants"
+import { decrementTime } from "./CountDown-utils"
 
 const {RESET,START,STOP, UPDATE_TIME, SET_TIME} = dispatcher
 
-const initialState = {
+export const initialState = {
 	start: false,
 	initial: {
 		...defaultTime,
+		min: 2
 	},
 	current: {
 		...defaultTime,
@@ -15,7 +16,6 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
 	switch (type) {
-
 	case START:
 		return { ...state, start: true, }
 	case RESET:

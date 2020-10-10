@@ -7,7 +7,6 @@ export const dispatcher = {
 }
 export const defaultTime = {
 	min: 0,
-	hours: 0,
-	seconds: 0,
-	milliseconds: 0
+	hour: 0,
+	sec: 0,
 }

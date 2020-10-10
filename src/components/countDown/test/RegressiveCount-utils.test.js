@@ -1,4 +1,4 @@
-import {decrementTime} from "../RegressiveCount-utiils"
+import {decrementTime} from "../CountDown-utils"
 
 describe("decrementTime", () => {
 	test("expected value", () => {
