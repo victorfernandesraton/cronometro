@@ -1,11 +1,11 @@
-import React from "react";
-import Conometro from "./components/Conometro";
+import React from "react"
+import Conometro from "./components/Conometro"
 const App = () => {
-  return (
-    <>
-      <Conometro />
-    </>
-  );
-};
+	return (
+		<>
+			<Conometro />
+		</>
+	)
+}
 
-export default App;
+export default App
