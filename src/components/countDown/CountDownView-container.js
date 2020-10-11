@@ -59,24 +59,27 @@ function CountDownView() {
 				}
 			}
 		}
+	// eslint-disable-next-line
 	}, [start, current, showAlert])
 
 	return (
 		<Container>
 			{!start && isZeroCountDown({ ...initial }) && (
-				<CountDownPicker
-					onChange={(date) => {
-						startCountdown(
-							{
-								hour: date.getHours(),
-								min: date.getMinutes(),
-								sec: date.getSeconds(),
-							},
-							dispatch
-						)
-					}}
-					value={setDateWithTime({ ...initial })}
-				/>
+				<ClockContainer>
+					<CountDownPicker
+						onChange={(date) => {
+							startCountdown(
+								{
+									hour: date.getHours(),
+									min: date.getMinutes(),
+									sec: date.getSeconds(),
+								},
+								dispatch
+							)
+						}}
+						value={setDateWithTime({ ...initial })}
+					/>
+				</ClockContainer>
 			)}
 			{showAlert && (
 				<CountdownAlert

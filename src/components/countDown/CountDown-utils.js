@@ -21,11 +21,13 @@ export const decrementTime = ({ hour = 0, min = 0, sec = 0 }) => {
 	}
 }
 
-export const setDateWithTime = (current) =>
-	setHours(
-		setMinutes(setSeconds(Date.now(), current.sec), current.min),
-		current.hour
-	)
+export const setDateWithTime = (param) => {
+	if (param) {
+		const { hour = 0, min = 0, sec = 0 } = param
+		return setHours(setMinutes(setSeconds(Date.now(), sec), min), hour)
+	}
+	return setHours(setMinutes(setSeconds(Date.now(), 0), 0), 0)
+}
 
 export const distanceBetweenTimes = ({ current, initial }) => {
 	const now = setDateWithTime(current)

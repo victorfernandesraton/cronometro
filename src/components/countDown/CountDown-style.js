@@ -17,13 +17,16 @@ export const ButtonBar = styled(Box)`
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	justify-self: center;
+	justify-self: flex-end;
+	flex-shrink: 0;
 `
 export const ButtonStartAndStop = styled(Button)``
 
 export const ClockContainer = styled(Box)`
 	display: flex;
 	padding: 2em;
+	height: 70vh;
+	flex: 1 0 auto;
 	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
@@ -39,7 +42,6 @@ export const alertStyles = makeStyles((theme) => ({
 	},
 	paper: {
 		backgroundColor: theme.palette.background.paper,
-		border: "2px solid #000",
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 	},
