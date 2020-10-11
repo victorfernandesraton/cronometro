@@ -10,7 +10,7 @@ function CountDownPicker({ onChange, value }) {
 			format="HH:mm:ss"
 			openTo="minutes"
 			views={["hours", "minutes", "seconds"]}
-			label="Next appointment"
+			label="Selecionar valores"
 			type="time"
 			clearable
 			onChange={onChange}

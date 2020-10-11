@@ -1,5 +1,11 @@
-import { setHours, setMinutes, setSeconds } from "date-fns"
-
+import { defaultTime } from "./CountDown-constants"
+import {
+	setHours,
+	setMinutes,
+	setSeconds,
+	formatDistance,
+	differenceInSeconds,
+} from "date-fns"
 export const valideDecrement = (val) => (val > 0 ? val - 1 : val)
 
 export const isZeroCountDown = ({ hour = 0, min = 0, sec = 0 }) =>
@@ -15,8 +21,20 @@ export const decrementTime = ({ hour = 0, min = 0, sec = 0 }) => {
 	}
 }
 
-export const seDefaultpickerValue = (current) =>
+export const setDateWithTime = (current) =>
 	setHours(
-		setMinutes(setSeconds(new Date(), current.sec), current.min),
+		setMinutes(setSeconds(Date.now(), current.sec), current.min),
 		current.hour
 	)
+
+export const distanceBetweenTimes = ({ current, initial }) => {
+	const now = setDateWithTime(current)
+	const base = setDateWithTime({ ...defaultTime })
+	const start = setDateWithTime(initial)
+	const percent =
+		(differenceInSeconds(start, now) /
+			(initial.sec + initial.min * 60 + initial.hour * 3600)) *
+		100
+
+	return { percent, text: formatDistance(now, base, { includeSeconds: true }) }
+}

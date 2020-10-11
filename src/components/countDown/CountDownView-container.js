@@ -1,8 +1,10 @@
 import React, { useReducer, useEffect, useCallback } from "react"
 
-import { Button } from "@material-ui/core"
-import { Container, ButtonBar } from "./CountDow-style"
+import { Button, LinearProgress } from "@material-ui/core"
+import { PlayArrow, Pause, Stop } from "@material-ui/icons"
 
+import ClockView from "../layout/ClockView-container"
+import { Container, ButtonBar, ClockContainer, TextContainer } from "./CountDown-style"
 import reducer, { initialState } from "./CountDown-reducer"
 
 import {
@@ -11,11 +13,20 @@ import {
 	startCountdown,
 	stopCountDown,
 } from "./CountDown-action"
-import { isZeroCountDown, seDefaultpickerValue } from "./CountDown-utils"
+import {
+	isZeroCountDown,
+	setDateWithTime,
+	distanceBetweenTimes,
+} from "./CountDown-utils"
 import CountDownPicker from "./CountDownPicker"
 
 function CountDownView() {
-	const [{ start, current, initial }, dispatch] = useReducer(reducer, initialState)
+	const [{ start, showClock, current, initial }, dispatch] = useReducer(
+		reducer,
+		initialState
+	)
+
+	console.log(distanceBetweenTimes({ current, initial }))
 
 	const changePlay = useCallback(() => {
 		stopCountDown(dispatch)
@@ -27,10 +38,14 @@ function CountDownView() {
 
 	useEffect(() => {
 		if (start) {
-			let count = setInterval(() => {
-				countDown({ ...current }, dispatch)
-			}, 1000)
-			return () => clearInterval(count)
+			if (!isZeroCountDown({...current})) {
+				let count = setInterval(() => {
+					countDown({ ...current }, dispatch)
+				}, 1000)
+				return () => clearInterval(count)
+			} else {
+				// alerta
+			}
 		}
 	}, [start, current])
 
@@ -48,11 +63,17 @@ function CountDownView() {
 							dispatch
 						)
 					}}
-					value={seDefaultpickerValue({ ...initial })}
+					value={setDateWithTime({ ...initial })}
 				/>
 			)}
-			{!isZeroCountDown({ ...current }) && (
-				<h1>{`${current.hour}:${current.min}:${current.sec}`}</h1>
+			{showClock && (
+				<ClockContainer>
+					<ClockView {...current} />
+					<LinearProgress variant="determinate" value={100 - distanceBetweenTimes({ current, initial }).percent} />
+					<TextContainer>
+						<h2>{distanceBetweenTimes({ current, initial }).text}</h2>
+					</TextContainer>
+				</ClockContainer>
 			)}
 			<ButtonBar>
 				<Button
@@ -60,9 +81,9 @@ function CountDownView() {
 					color="primary"
 					onClick={changePlay}
 				>
-					{start ? "Stop" : "Start"}
+					{start ? <Pause/> : <PlayArrow/>}
 				</Button>
-				<Button onClick={reset}>Reset</Button>
+				<Button onClick={reset}><Stop/></Button>
 			</ButtonBar>
 		</Container>
 	)
