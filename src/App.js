@@ -8,7 +8,7 @@ import DateFnsUtils from "@date-io/date-fns"
 const App = () => {
 	return (
 		<MuiPickersUtilsProvider utils={DateFnsUtils}>
-			<Conometro />
+			{/* <Conometro /> */}
 			<CountDown />
 		</MuiPickersUtilsProvider>
 	)

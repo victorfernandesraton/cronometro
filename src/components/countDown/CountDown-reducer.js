@@ -2,7 +2,7 @@
 import { defaultTime, dispatcher } from "./CountDown-constants"
 import { decrementTime } from "./CountDown-utils"
 
-const { RESET, START, STOP, UPDATE_TIME, SET_TIME } = dispatcher
+const { RESET, START, STOP, UPDATE_TIME, SET_TIME, ALERT } = dispatcher
 
 export const initialState = {
 	start: false,
@@ -13,6 +13,7 @@ export const initialState = {
 		...defaultTime,
 	},
 	showClock: false,
+	showAlert: false,
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -22,10 +23,7 @@ export default (state = initialState, { type, payload }) => {
 		case RESET:
 			return {
 				...state,
-				start: false,
-				showClock: false,
-				current: { ...defaultTime },
-				initial: { ...defaultTime },
+				...initialState,			
 			}
 		case STOP:
 			return { ...state, start: !state.start }
@@ -34,6 +32,9 @@ export default (state = initialState, { type, payload }) => {
 		}
 		case UPDATE_TIME: {
 			return { ...state, current: { ...decrementTime(state.current) } }
+		}
+		case ALERT: {
+			return {...state, showAlert: !state.showAlert}
 		}
 		default:
 			return state

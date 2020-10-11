@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box, Button } from "@material-ui/core"
+import { Box, Button, makeStyles } from "@material-ui/core"
 
 export const Container = styled(Box)`
 	display: flex;
@@ -30,3 +30,17 @@ export const ClockContainer = styled(Box)`
 	justify-self: center;
 	justify-items: center;
 `
+
+export const alertStyles = makeStyles((theme) => ({
+	modal: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	paper: {
+		backgroundColor: theme.palette.background.paper,
+		border: "2px solid #000",
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+	},
+}))
