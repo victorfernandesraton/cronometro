@@ -59,7 +59,7 @@ function CountDownView() {
 				}
 			}
 		}
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [start, current, showAlert])
 
 	return (
@@ -95,9 +95,11 @@ function CountDownView() {
 						variant="determinate"
 						value={100 - distanceBetweenTimes({ current, initial }).percent}
 					/>
-					<TextContainer>
-						<h2>{distanceBetweenTimes({ current, initial }).text}</h2>
-					</TextContainer>
+					{!isZeroCountDown({ ...current }) && (
+						<TextContainer>
+							<h2>{distanceBetweenTimes({ current, initial }).text}</h2>
+						</TextContainer>
+					)}
 				</ClockContainer>
 			)}
 			<ButtonBar>
