@@ -1,14 +1,11 @@
 import {dispatcher} from "./CountDown-constants"
 import {decrementTime} from "./CountDown-utils"
 
-const {RESET,START,STOP, UPDATE_TIME, SET_TIME} = dispatcher
+const {RESET,STOP, UPDATE_TIME, SET_TIME} = dispatcher
 
 export const startCountdown = ({hour= 0,min =0,sec= 0},dispatch) => {
 	dispatch({
 		type: RESET
-	})
-	dispatch({
-		type: START
 	})
 	dispatch({
 		type:SET_TIME,
