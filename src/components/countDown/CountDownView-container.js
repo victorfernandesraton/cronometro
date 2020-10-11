@@ -68,14 +68,16 @@ function CountDownView() {
 				<ClockContainer>
 					<CountDownPicker
 						onChange={(date) => {
-							startCountdown(
-								{
-									hour: date.getHours(),
-									min: date.getMinutes(),
-									sec: date.getSeconds(),
-								},
-								dispatch
-							)
+							if (date) {
+								startCountdown(
+									{
+										hour: date ? date.getHours(): 0,
+										min: date ? date.getMinutes() : 0,
+										sec: date ? date.getSeconds() : 0,
+									},
+									dispatch
+								)
+							}
 						}}
 						value={setDateWithTime({ ...initial })}
 					/>
