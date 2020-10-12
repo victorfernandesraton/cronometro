@@ -1,9 +1,9 @@
 import React from "react"
 import BottomNavigation from "@material-ui/core/BottomNavigation"
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction"
-import RestoreIcon from "@material-ui/icons/Restore"
-import FavoriteIcon from "@material-ui/icons/Favorite"
-import LocationOnIcon from "@material-ui/icons/LocationOn"
+import HourglassFullIcon from "@material-ui/icons/HourglassFull"
+import TimerIcon from "@material-ui/icons/Timer"
+import LanguageIcon from "@material-ui/icons/Language"
 import { useMenu } from "../Menu/Menu-context"
 
 export default function SimpleBottomNavigation() {
@@ -15,11 +15,10 @@ export default function SimpleBottomNavigation() {
 			onChange={(event, newValue) => {
 				setValue(newValue)
 			}}
-			showLabels
 		>
-			<BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-			<BottomNavigationAction label="Contador" icon={<FavoriteIcon />} />
-			<BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+			<BottomNavigationAction label="Conômetro" icon={<TimerIcon />} />
+			<BottomNavigationAction label="Contador" icon={<HourglassFullIcon />} />
+			<BottomNavigationAction label="Relogio" icon={<LanguageIcon />} />
 		</BottomNavigation>
 	)
 }
