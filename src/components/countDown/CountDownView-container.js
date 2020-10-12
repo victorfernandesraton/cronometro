@@ -99,7 +99,7 @@ function CountDownView() {
 					/>
 					{!isZeroCountDown({ ...current }) && (
 						<TextContainer>
-							<h2>{distanceBetweenTimes({ current, initial }).text}</h2>
+							<h3>{distanceBetweenTimes({ current, initial }).text}</h3>
 						</TextContainer>
 					)}
 				</ClockContainer>
