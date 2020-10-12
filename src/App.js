@@ -1,16 +1,16 @@
 import React from "react"
-import Conometro from "./components/Conometro"
-import CountDown from "./components/countDown/CountDownView-container"
 
-import { MuiPickersUtilsProvider } from "@material-ui/pickers"
-import DateFnsUtils from "@date-io/date-fns"
-
+import MainScreen from "./screen/mian-screen"
+import MenuProvider from "./components/Menu/Menu-context"
+import Navbar from "./components/layout/Navbar"
 const App = () => {
 	return (
-		<MuiPickersUtilsProvider utils={DateFnsUtils}>
-			{/* <Conometro /> */}
-			<CountDown />
-		</MuiPickersUtilsProvider>
+		<>
+			<MenuProvider>
+				<Navbar/>
+				<MainScreen />
+			</MenuProvider>
+		</>
 	)
 }
 
