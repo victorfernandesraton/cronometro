@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useCallback } from "react"
 
 import { Button, LinearProgress } from "@material-ui/core"
-import { PlayArrow, Pause, Stop } from "@material-ui/icons"
+import { PlayArrow, Pause, Stop, FiberManualRecord } from "@material-ui/icons"
 
 import ClockView from "../layout/ClockView-container"
 import {
@@ -112,8 +112,8 @@ function CountDownView() {
 				>
 					{start ? <Pause /> : <PlayArrow />}
 				</Button>
-				<Button onClick={reset}>
-					<Stop />
+				<Button onClick={reset} color="secondary">
+					{start ? <Stop /> : <FiberManualRecord/>}
 				</Button>
 			</ButtonBar>
 		</Container>

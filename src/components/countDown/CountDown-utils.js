@@ -6,6 +6,8 @@ import {
 	formatDistance,
 	differenceInSeconds,
 } from "date-fns"
+
+import { ptBR } from "date-fns/locale"
 export const valideDecrement = (val) => (val > 0 ? val - 1 : val)
 
 export const isZeroCountDown = ({ hour = 0, min = 0, sec = 0 }) =>
@@ -38,5 +40,8 @@ export const distanceBetweenTimes = ({ current, initial }) => {
 			(initial.sec + initial.min * 60 + initial.hour * 3600)) *
 		100
 
-	return { percent, text: formatDistance(now, base, { includeSeconds: true }) }
+	return {
+		percent,
+		text: formatDistance(now, base, { includeSeconds: true, locale: ptBR }),
+	}
 }
