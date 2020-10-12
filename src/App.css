@@ -9,6 +9,13 @@
 .my-title {
 	color: blue;
 	font-size: 1cm;
+	justify-content: 'center';
+	flex-direction: 'column';
+	align-self: center;
+}
+
+.container {
+	
 }
 
 @media (prefers-reduced-motion: no-preference) {

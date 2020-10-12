@@ -3,6 +3,7 @@ import Contador from "./Contador"
 import Botao from "./Botao"
 import LabelRelogio from "./LabelRelogio"
 import "../App.css"
+import Button from '@material-ui/core/Button';
 
 class Cronometro extends React.Component {
 	constructor(props) {
@@ -17,7 +18,7 @@ class Cronometro extends React.Component {
 		}
 	}
 	zerarCronometro() {
-		this.state.segundos = -1
+		this.state.segundos = 0
 		this.state.minutos = 0
 		this.state.parcial = ""
 	}
@@ -67,12 +68,12 @@ class Cronometro extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="container">
 				<Contador minutos={this.state.minutos} segundos={this.state.segundos} />
 				<LabelRelogio name={this.state.name} />
-				<Botao onClick={() => this.zerarCronometro()} label={"Zerar"} />
-				<Botao onClick={() => this.pararTempo()} label={this.state.nameStop} />
-				<Botao onClick={() => this.parcial()} label={"Pacial"} />
+				<Button onClick={() => this.zerarCronometro()}>Zerar</Button>
+				<Button onClick={() => this.pararTempo()} label={this.state.nameStop} />
+				<Button onClick={() => this.parcial()} label={"Pacial"} />
 				<LabelRelogio name={this.state.parcial} />
 			</div>
 		)
