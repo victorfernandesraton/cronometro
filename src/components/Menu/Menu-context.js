@@ -3,7 +3,7 @@ import React, { useContext, createContext, useState } from "react"
 const menuContext = createContext()
 
 const MenuProvider = ({ children }) => {
-	const menu = useState(1)
+	const menu = useState(0)
 	return <menuContext.Provider value={menu}>{children}</menuContext.Provider>
 }
 

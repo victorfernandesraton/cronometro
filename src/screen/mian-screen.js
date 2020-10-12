@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from "react"
 
 import { useMenu } from "../components/Menu/Menu-context"
@@ -9,15 +10,15 @@ const MainScreen = () => {
 	const [value] = useMenu()
 
 	switch (value) {
-	case 1:
-		return <CountDown />
-	default:
-	case 2:
-		return (
-			<>
-				<Conometro />
-			</>
-		)
+		default:
+		case 0:
+			return (
+				<>
+					<Conometro />
+				</>
+			)
+		case 1:
+			return <CountDown />
 	}
 }
 

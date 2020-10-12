@@ -9,18 +9,17 @@
 .my-title {
 	color: #66b9bf;
 	font-size: 1cm;
-	justify-content: 'center';
-	flex-direction: 'column';
+	justify-content: "center";
+	flex-direction: "column";
 	align-self: center;
 }
 
 .container {
-	color: #EEAA7B;
+	color: #eeaa7b;
 	font-size: 1cm;
 	justify-content: center;
 	align-self: center;
 	text-align: center;
-
 }
 
 @media (prefers-reduced-motion: no-preference) {

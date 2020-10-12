@@ -8,13 +8,13 @@ describe("dateUtils", () => {
 		expect(val.getSeconds()).toEqual(0)
 	})
 	test("expected", () => {
-		const val = setDateWithTime({min: 2, hour: 1, sec: 3})
+		const val = setDateWithTime({ min: 2, hour: 1, sec: 3 })
 		expect(val.getHours()).toEqual(1)
 		expect(val.getMinutes()).toEqual(2)
 		expect(val.getSeconds()).toEqual(3)
 	})
 	test("using default", () => {
-		const val = setDateWithTime({min: 2})
+		const val = setDateWithTime({ min: 2 })
 		expect(val.getHours()).toEqual(0)
 		expect(val.getMinutes()).toEqual(2)
 		expect(val.getSeconds()).toEqual(0)

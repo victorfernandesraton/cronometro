@@ -4,7 +4,7 @@ export const dispatcher = {
 	RESET: "RESET",
 	UPDATE_TIME: "UPDATE_TIME",
 	SET_TIME: "SET_TIME",
-	ALERT: "ALERT"
+	ALERT: "ALERT",
 }
 export const defaultTime = {
 	min: 0,

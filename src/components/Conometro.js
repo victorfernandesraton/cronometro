@@ -1,9 +1,8 @@
 import React from "react"
 import Contador from "./Contador"
-import Botao from "./Botao"
 import LabelRelogio from "./LabelRelogio"
 import "../App.css"
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button"
 
 class Cronometro extends React.Component {
 	constructor(props) {

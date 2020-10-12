@@ -30,11 +30,11 @@ export const resetCountDown = (dispatch) => {
 	})
 }
 
-export const changeShowAlert= (dispatch) => {
+export const changeShowAlert = (dispatch) => {
 	dispatch({
 		type: ALERT,
 	})
-} 
+}
 export const stopCountDown = (dispatch) => {
 	dispatch({
 		type: STOP,

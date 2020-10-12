@@ -23,18 +23,23 @@ export default (state = initialState, { type, payload }) => {
 		case RESET:
 			return {
 				...state,
-				...initialState,			
+				...initialState,
 			}
 		case STOP:
 			return { ...state, start: !state.start }
 		case SET_TIME: {
-			return { ...state, initial: { ...payload }, current: { ...payload }, showClock: true }
+			return {
+				...state,
+				initial: { ...payload },
+				current: { ...payload },
+				showClock: true,
+			}
 		}
 		case UPDATE_TIME: {
 			return { ...state, current: { ...decrementTime(state.current) } }
 		}
 		case ALERT: {
-			return {...state, showAlert: !state.showAlert}
+			return { ...state, showAlert: !state.showAlert }
 		}
 		default:
 			return state

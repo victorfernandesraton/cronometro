@@ -71,7 +71,7 @@ function CountDownView() {
 							if (date) {
 								startCountdown(
 									{
-										hour: date ? date.getHours(): 0,
+										hour: date ? date.getHours() : 0,
 										min: date ? date.getMinutes() : 0,
 										sec: date ? date.getSeconds() : 0,
 									},
@@ -113,7 +113,7 @@ function CountDownView() {
 					{start ? <Pause /> : <PlayArrow />}
 				</Button>
 				<Button onClick={reset} color="secondary">
-					{start ? <Stop /> : <FiberManualRecord/>}
+					{start ? <Stop /> : <FiberManualRecord />}
 				</Button>
 			</ButtonBar>
 		</Container>
