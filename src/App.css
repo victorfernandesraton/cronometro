@@ -7,7 +7,7 @@
 	pointer-events: none;
 }
 .my-title {
-	color: blue;
+	color: #66b9bf;
 	font-size: 1cm;
 	justify-content: 'center';
 	flex-direction: 'column';
@@ -15,7 +15,12 @@
 }
 
 .container {
-	
+	color: #EEAA7B;
+	font-size: 1cm;
+	justify-content: center;
+	align-self: center;
+	text-align: center;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {

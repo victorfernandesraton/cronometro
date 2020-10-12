@@ -69,11 +69,11 @@ class Cronometro extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<Contador minutos={this.state.minutos} segundos={this.state.segundos} />
 				<LabelRelogio name={this.state.name} />
+				<Contador minutos={this.state.minutos} segundos={this.state.segundos} />
 				<Button onClick={() => this.zerarCronometro()}>Zerar</Button>
-				<Button onClick={() => this.pararTempo()} label={this.state.nameStop} />
-				<Button onClick={() => this.parcial()} label={"Pacial"} />
+				<Button onClick={() => this.pararTempo()}>Start/Stop</Button>
+				<Button onClick={() => this.parcial()}>Parcial</Button>
 				<LabelRelogio name={this.state.parcial} />
 			</div>
 		)
