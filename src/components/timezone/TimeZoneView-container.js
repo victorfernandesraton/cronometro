@@ -32,7 +32,7 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 
 	const removeZone = useCallback((val) => {
 		setTimeZones([...timeZones].filter((el) => el !== val))
-	})
+	}, [timeZones])
 
 	useEffect(() => {
 		let timer = setInterval(() => {

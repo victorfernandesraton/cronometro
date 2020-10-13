@@ -32,11 +32,11 @@ export default function TimeZonePicker({ zones = [], addItem }) {
 
 	const handleChange = useCallback((event) => {
 		setZone(event.target.value)
-	}, [])
+	}, [setZone])
 
 	const handleOpen = useCallback((value) => {
 		setOpen(value)
-	}, [open, setOpen])
+	}, [setOpen])
 
 	return (
 		<>
@@ -57,13 +57,14 @@ export default function TimeZonePicker({ zones = [], addItem }) {
 				open={open}
 				onClose={() => handleOpen(false)}
 			>
-				<DialogTitle>Fill the form</DialogTitle>
+				<DialogTitle>Adicionar Horário</DialogTitle>
 				<DialogContent>
 					<form className={classes.container}>
 						<FormControl className={classes.formControl}>
-							<InputLabel htmlFor="demo-dialog-native">Age</InputLabel>
+							<InputLabel htmlFor="demo-dialog-native">Cidade</InputLabel>
 							<Select
 								native
+								defaultValue={zone}
 								value={zone}
 								onChange={handleChange}
 								input={<Input id="demo-dialog-native" />}
@@ -71,7 +72,6 @@ export default function TimeZonePicker({ zones = [], addItem }) {
 								{zones.map((el, key) => {
 									return (
 										<option
-											selected={el.timezone === zone}
 											key={key}
 											value={el.timezone}
 										>
