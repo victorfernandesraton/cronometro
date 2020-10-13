@@ -61,7 +61,7 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 			</div>
 			<List
 				style={{
-					height: "65vh",
+					height: "63vh",
 					overflow: "auto",
 				}}
 			>
