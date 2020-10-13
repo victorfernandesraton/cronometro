@@ -1,7 +1,6 @@
 export const defaultZones = [
 	"America/New_York",
 	"Asia/Tokyo",
-	"Asia/Pyongyang",
 	"Europe/London",
 ]
 export const aryIannaTimeZones = [
