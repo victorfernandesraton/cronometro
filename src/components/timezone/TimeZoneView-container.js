@@ -14,6 +14,7 @@ import {
 	defaultZones as initialZones,
 } from "./TimeZone-constants"
 import { generateZones, parseHours } from "./TimeZone-utils"
+import { ptBR } from "date-fns/locale"
 
 function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const [date, setDate] = useState(Date.now())
@@ -47,13 +48,21 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 	return (
 		<>
 			<Clock {...parseHours(new Date(date))} />
-			<Typography variant="caption">
-				{format(new Date(date), "d MMMM yyyy")}
-			</Typography>
+			<div
+				style={{
+					marginLeft: 20,
+				}}
+			>
+				<Typography variant="h6">
+					{format(new Date(date), "EEEE d MMMM yyyy", {
+						locale: ptBR,
+					})}
+				</Typography>
+			</div>
 			<List
 				style={{
-					height: "60vh",
-					overflow: "auto"
+					height: "65vh",
+					overflow: "auto",
 				}}
 			>
 				{timeZones.length > 0 &&

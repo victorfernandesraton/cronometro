@@ -1,5 +1,7 @@
 import React from "react"
-import { format } from "date-fns"
+import { format, formatDistance } from "date-fns"
+import { ptBR } from "date-fns/locale"
+
 import { ListItem, ListItemText, Typography, Button } from "@material-ui/core"
 import { Delete } from "@material-ui/icons"
 
@@ -16,10 +18,20 @@ function TimeZOneItem({ date = new Date(Date.now()), locale, deleteItem }) {
 			<ListItemText
 				primary={extractCity(locale)}
 				secondary={
-					<Typography variant="caption">{format(date, "d MMMM yyyy")}</Typography>
+					<div style={{
+						display: "flex",
+						flexDirection: "column"
+					}}>
+						<Clock {...parseHours(date)} /> 
+						<Typography variant="caption">{format(date, "EEEE d MMMM yyyy",{
+							locale: ptBR,
+						})}</Typography>
+						<Typography variant="caption">{formatDistance(date, Date.now(),{
+							locale: ptBR
+						})}</Typography>
+					</div>
 				}
 			/>
-			<Clock {...parseHours(date)} />
 			<Button onClick={() => {
 				deleteItem(locale)
 			}} color="secondary"><Delete/></Button>
