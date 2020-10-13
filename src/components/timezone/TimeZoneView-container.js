@@ -30,9 +30,12 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 		[timeZones]
 	)
 
-	const removeZone = useCallback((val) => {
-		setTimeZones([...timeZones].filter((el) => el !== val))
-	}, [timeZones])
+	const removeZone = useCallback(
+		(val) => {
+			setTimeZones([...timeZones].filter((el) => el !== val))
+		},
+		[timeZones]
+	)
 
 	useEffect(() => {
 		let timer = setInterval(() => {
@@ -47,7 +50,12 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 			<Typography variant="caption">
 				{format(new Date(date), "d MMMM yyyy")}
 			</Typography>
-			<List>
+			<List
+				style={{
+					height: "60vh",
+					overflow: "auto"
+				}}
+			>
 				{timeZones.length > 0 &&
 					timeZones.map((el, i) => {
 						if (!zones.find((z) => z.timezone === el)) {
