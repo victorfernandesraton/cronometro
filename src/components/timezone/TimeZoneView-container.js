@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react"
 
-import { utcToZonedTime, zonedTimeToUtc } from "date-fns-tz"
+import { format } from "date-fns"
+import { utcToZonedTime } from "date-fns-tz"
+import { List, Typography } from "@material-ui/core"
 
 import Clock from "../layout/ClockView-container"
 
+import TimeZonePicker from "./TimeZonePicker"
 import TimeZoneItem from "./TimeZoneItem"
 
 import {
@@ -19,14 +22,18 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const zones = useMemo(() => {
 		return aryIannaTimeZones.map((el) => generateZones(el))
 	}, [])
-	
+
 	const addZone = useCallback(
 		(zone) => {
 			setTimeZones([...timeZones, zone])
 		},
 		[timeZones]
 	)
-	
+
+	const removeZone = useCallback((val) => {
+		setTimeZones([...timeZones].filter((el) => el !== val))
+	})
+
 	useEffect(() => {
 		let timer = setInterval(() => {
 			setDate(Date.now())
@@ -36,22 +43,30 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 
 	return (
 		<>
-			<Clock
-				{...parseHours(new Date(date))}
+			<Clock {...parseHours(new Date(date))} />
+			<Typography variant="caption">
+				{format(new Date(date), "d MMMM yyyy")}
+			</Typography>
+			<List>
+				{timeZones.length > 0 &&
+					timeZones.map((el, i) => {
+						if (!zones.find((z) => z.timezone === el)) {
+							return <div>{`Não encontrado ${el}`}</div>
+						}
+						return (
+							<TimeZoneItem
+								key={i}
+								date={utcToZonedTime(new Date(date), el)}
+								locale={el}
+								deleteItem={removeZone}
+							/>
+						)
+					})}
+			</List>
+			<TimeZonePicker
+				zones={zones.filter((el) => !timeZones.find((i) => el.timezone === i))}
+				addItem={addZone}
 			/>
-			{timeZones.length > 0 &&
-				timeZones.map((el, i) => {
-					if (!zones.find((z) => z.timezone === el)) {
-						return <div>{`Não encontrado ${el}`}</div>
-					}
-					return (
-						<TimeZoneItem
-							key={i}
-							date={utcToZonedTime(new Date(date), el)}
-							locale={el}
-						/>
-					)
-				})}
 		</>
 	)
 }
