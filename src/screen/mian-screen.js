@@ -5,7 +5,7 @@ import { useMenu } from "../components/Menu/Menu-context"
 
 import Conometro from "../components/Conometro"
 import CountDown from "../components/countDown/CountDownView-container"
-
+import Timezone from "../components/timezone/TimeZoneView-container"
 const MainScreen = () => {
 	const [value] = useMenu()
 
@@ -19,6 +19,8 @@ const MainScreen = () => {
 			)
 		case 1:
 			return <CountDown />
+		case 2:
+			return <Timezone />
 	}
 }
 

@@ -7,10 +7,10 @@ const Container = styled.div`
 	justify-self: center;
 `
 
-const ClockView = ({ hour, min, sec }) => {
+const ClockView = ({ hour, min, sec, style }) => {
 	const showValue = useCallback((val) => (val < 10 ? `0${val}` : val), [])
 	return (
-		<Container>
+		<Container style={style}>
 			<h1>{`${showValue(hour)}:${showValue(min)}:${showValue(sec)}`}</h1>
 		</Container>
 	)
