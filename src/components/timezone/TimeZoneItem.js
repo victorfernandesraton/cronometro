@@ -32,9 +32,7 @@ function TimeZOneItem({ date = new Date(Date.now()), locale, deleteItem }) {
 					</div>
 				}
 			/>
-			<Button onClick={() => {
-				deleteItem(locale)
-			}} color="secondary"><Delete/></Button>
+			
 		</ListItem>
 	)
 }
