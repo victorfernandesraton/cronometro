@@ -14,13 +14,7 @@
 	align-self: center;
 }
 
-.container {
-	color: #eeaa7b;
-	font-size: 1cm;
-	justify-content: center;
-	align-self: center;
-	text-align: center;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
 	.App-logo {
