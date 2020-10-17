@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "ClockView-container";
+// import styled from "ClockView-container";
 
 export default function App() {
   // segundos e função que altera
