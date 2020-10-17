@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 
 import { format } from "date-fns"
 import { utcToZonedTime } from "date-fns-tz"
@@ -16,7 +16,7 @@ import { ptBR } from "date-fns/locale"
 
 function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const [date, setDate] = useState(Date.now())
-	const [timeZones, setTimeZones] = useState(defaultZones)
+	const [timeZones] = useState(defaultZones)
 
 	const zones = useMemo(() => {
 		return aryIannaTimeZones.map((el) => generateZones(el))
@@ -31,16 +31,16 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 
 	return (
 		<>
-			<div style={{textAlign: "center"}}> 
+			<div style={{ textAlign: "center" }}>
 				<h1>Relógio Mundial</h1>
 			</div>
 			<div>
-				<div style={{textAlign: "center"}}>
-					<Typography varieant='h6'>Brasília</Typography>
+				<div style={{ textAlign: "center" }}>
+					<Typography varieant="h6">Brasília</Typography>
 				</div>
-				
+
 				<Clock {...parseHours(new Date(date))} />
-				<div style={{textAlign: "center"}}>
+				<div style={{ textAlign: "center" }}>
 					<Typography variant="h6">
 						{format(new Date(date), "EEEE d MMMM yyyy", {
 							locale: ptBR,
@@ -48,7 +48,7 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 					</Typography>
 				</div>
 			</div>
-			
+
 			<List
 				style={{
 					height: "50vh",
@@ -65,13 +65,10 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 								key={i}
 								date={utcToZonedTime(new Date(date), el)}
 								locale={el}
-								
 							/>
 						)
 					})}
 			</List>
-
-			
 		</>
 	)
 }

@@ -2,14 +2,13 @@ import React from "react"
 import { format, formatDistance } from "date-fns"
 import { ptBR } from "date-fns/locale"
 
-import { ListItem, ListItemText, Typography, Button } from "@material-ui/core"
-import { Delete } from "@material-ui/icons"
+import { ListItem, ListItemText, Typography } from "@material-ui/core"
 
 import { ClockView as Clock } from "./TimeZone-style"
 import { aryIannaTimeZones } from "./TimeZone-constants"
 import { extractCity, parseHours } from "./TimeZone-utils"
 
-function TimeZOneItem({ date = new Date(Date.now()), locale, deleteItem }) {
+function TimeZOneItem({ date = new Date(Date.now()), locale }) {
 	if (!aryIannaTimeZones.find((el) => el === locale)) {
 		return <div>Loccalidssade inválida</div>
 	}
