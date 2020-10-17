@@ -15,6 +15,7 @@ import {
 } from "./TimeZone-constants"
 import { generateZones, parseHours } from "./TimeZone-utils"
 import { ptBR } from "date-fns/locale"
+import { CenterFocusStrong } from "@material-ui/icons"
 
 function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const [date, setDate] = useState(Date.now())
@@ -47,18 +48,34 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 
 	return (
 		<>
-			<Clock {...parseHours(new Date(date))} />
-			<div
-				style={{
-					marginLeft: 20,
-				}}
-			>
-				<Typography variant="h6">
-					{format(new Date(date), "EEEE d MMMM yyyy", {
-						locale: ptBR,
-					})}
-				</Typography>
+			<div style={{
+						textAlign: "center",
+					}}> 
+				<h1>Relógio Mundial</h1>
 			</div>
+			<div>
+				<div
+					style={{
+						textAlign: "center",
+					}}
+				>
+					<h6 class="MuiTypography-root MuiTypography-h6">Brasília</h6>
+				</div>
+				
+				<Clock {...parseHours(new Date(date))} />
+				<div
+					style={{
+						textAlign: "center",
+					}}
+				>
+					<Typography variant="h6">
+						{format(new Date(date), "EEEE d MMMM yyyy", {
+							locale: ptBR,
+						})}
+					</Typography>
+				</div>
+			</div>
+			
 			<List
 				style={{
 					height: "63vh",
@@ -75,15 +92,13 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 								key={i}
 								date={utcToZonedTime(new Date(date), el)}
 								locale={el}
-								deleteItem={removeZone}
+								
 							/>
 						)
 					})}
 			</List>
-			<TimeZonePicker
-				zones={zones.filter((el) => !timeZones.find((i) => el.timezone === i))}
-				addItem={addZone}
-			/>
+
+			
 		</>
 	)
 }

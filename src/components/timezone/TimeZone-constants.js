@@ -1,8 +1,11 @@
 export const defaultZones = [
 	"America/New_York",
-	"Asia/Tokyo",
+	"America/Argentina/Buenos_Aires",
 	"Europe/London",
+	"Antarctica/Vostok",
+	"Asia/Tokyo",
 ]
+	
 export const aryIannaTimeZones = [
 	"Europe/Andorra",
 	"Asia/Dubai",
