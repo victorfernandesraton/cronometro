@@ -3,10 +3,8 @@ import React, { useState, useEffect, useCallback, useMemo } from "react"
 import { format } from "date-fns"
 import { utcToZonedTime } from "date-fns-tz"
 import { List, Typography } from "@material-ui/core"
-
 import Clock from "../layout/ClockView-container"
 
-import TimeZonePicker from "./TimeZonePicker"
 import TimeZoneItem from "./TimeZoneItem"
 
 import {
@@ -15,7 +13,6 @@ import {
 } from "./TimeZone-constants"
 import { generateZones, parseHours } from "./TimeZone-utils"
 import { ptBR } from "date-fns/locale"
-import { CenterFocusStrong } from "@material-ui/icons"
 
 function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const [date, setDate] = useState(Date.now())
@@ -24,20 +21,6 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 	const zones = useMemo(() => {
 		return aryIannaTimeZones.map((el) => generateZones(el))
 	}, [])
-
-	const addZone = useCallback(
-		(zone) => {
-			setTimeZones([...timeZones, zone])
-		},
-		[timeZones]
-	)
-
-	const removeZone = useCallback(
-		(val) => {
-			setTimeZones([...timeZones].filter((el) => el !== val))
-		},
-		[timeZones]
-	)
 
 	useEffect(() => {
 		let timer = setInterval(() => {
@@ -48,26 +31,16 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 
 	return (
 		<>
-			<div style={{
-						textAlign: "center",
-					}}> 
+			<div style={{textAlign: "center"}}> 
 				<h1>Relógio Mundial</h1>
 			</div>
 			<div>
-				<div
-					style={{
-						textAlign: "center",
-					}}
-				>
-					<h6 class="MuiTypography-root MuiTypography-h6">Brasília</h6>
+				<div style={{textAlign: "center"}}>
+					<Typography varieant='h6'>Brasília</Typography>
 				</div>
 				
 				<Clock {...parseHours(new Date(date))} />
-				<div
-					style={{
-						textAlign: "center",
-					}}
-				>
+				<div style={{textAlign: "center"}}>
 					<Typography variant="h6">
 						{format(new Date(date), "EEEE d MMMM yyyy", {
 							locale: ptBR,
@@ -78,7 +51,7 @@ function TimeZoneView({ defaultZones = [...initialZones] }) {
 			
 			<List
 				style={{
-					height: "63vh",
+					height: "50vh",
 					overflow: "auto",
 				}}
 			>
